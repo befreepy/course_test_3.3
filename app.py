@@ -1,6 +1,7 @@
-from flask import Flask, send_from_directory
+from flask import Flask
 from main.views import main_blueprint
-#from api.views import api_blueprint
+from api.views import api_blueprint
+from errors.views import errors_blueprint
 
 
 app = Flask(__name__)
@@ -10,14 +11,8 @@ app = Flask(__name__)
 """
 
 app.register_blueprint(main_blueprint)
-#app.register_blueprint(api_blueprint)
-
-app.config['JSON_AS_ASCII'] = False
+app.register_blueprint(api_blueprint)
+app.register_blueprint(errors_blueprint)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-#@app.route("/uploads/<path:path>")
-#def static_dir(path):
-#    return send_from_directory("uploads", path)
