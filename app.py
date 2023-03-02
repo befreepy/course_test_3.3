@@ -11,7 +11,9 @@ app = Flask(__name__)
 app.register_blueprint(main_blueprint)
 app.register_blueprint(api_blueprint)
 
-
+"""
+обработчик ошибок
+"""
 @app.errorhandler(404)
 def page_not_found():
     return "<h1>Страница не найдена</h1>"
